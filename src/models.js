@@ -155,6 +155,8 @@ module.exports = {
 				kelvinValue: true, //current kelvin value
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
+				//other
+				osd: true, //on-screen display on/off per output (menu.cgi)
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -175,6 +177,7 @@ module.exports = {
 				autoIrisMode: true, //iris mode is auto or manual
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
+				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
@@ -210,6 +213,7 @@ module.exports = {
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
+				osd: true, //on-screen display on/off per output
 				presets: true, //save, recall, set preset recall mode,
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -457,6 +461,7 @@ module.exports = {
 				bGainValue: true, //current b gain value
 				//other
 				colorBars: true, //camera color bars state is on/off
+				osd: true, //on-screen display on/off per output (menu.cgi)
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -478,6 +483,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				colorBars: true, //camera color bars is on or off
+				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
@@ -514,6 +520,7 @@ module.exports = {
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
 				colorBars: true, //camera color bars state is on/off
+				osd: true, //on-screen display on/off per output
 				presets: true, //save, recall, set preset recall mode
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -559,6 +566,8 @@ module.exports = {
 				kelvinValue: true, //current kelvin value
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
+				//other
+				osd: true, //on-screen display on/off per output (menu.cgi)
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -579,6 +588,7 @@ module.exports = {
 				autoIrisMode: true, //iris mode is auto or manual
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
+				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
@@ -614,6 +624,7 @@ module.exports = {
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
+				osd: true, //on-screen display on/off per output
 				presets: true, //save, recall, set preset recall mode
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -914,6 +925,7 @@ module.exports = {
 				//system
 				powerState: true, //camera is on or off (idle or standby)
 				cameraName: true, //name of camera
+				osd: true, //on-screen display on/off per output (menu.cgi)
 				firmwareVersion: true, //firmware version
 				protocolVersion: true, //protocol version
 				macAddress: true, //MAC address
@@ -960,6 +972,7 @@ module.exports = {
 				autoIrisMode: true, //iris mode is auto or manual
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
+				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
@@ -996,6 +1009,7 @@ module.exports = {
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_OTHER() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
+				osd: true, //on-screen display on/off per output
 				presets: true, // Can Save and Recall Presets
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control

@@ -83,6 +83,7 @@ module.exports = {
 
 					self.updateStatus(InstanceStatus.Ok)
 
+					self.restoreOsdOtherOutputIfGuarded()
 					self.checkVariables()
 					self.checkFeedbacks()
 				}
@@ -357,6 +358,18 @@ module.exports = {
 					break;
 				case 'c.1.colorbar':
 					self.data.colorBars = str[1];
+					break;
+				// m.onscreen = état de la dernière sortie modifiée (ne pas l'associer à 12G).
+				case 'm.onscreen':
+					if (self.osdPollGuard && self.shouldApplyOsdPollValue(self.osdPollGuard.changedOutput)) {
+						self.applyOsdPollValue(self.osdPollGuard.changedOutput, str[1])
+					}
+					break;
+				case 'm.output1.onscreen':
+					self.applyOsdPollValue('output1', str[1])
+					break;
+				case 'm.output2.onscreen':
+					self.applyOsdPollValue('output2', str[1])
 					break;
 				case 'p':
 					self.data.presetLastUsed = parseInt(str[1]);

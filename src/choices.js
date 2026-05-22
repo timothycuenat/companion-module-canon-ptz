@@ -1,4 +1,46 @@
 module.exports = {
+	// API: output1 = 12G, output2 = 3G (menu.cgi?…&output=output1|output2)
+	CHOICES_OSD_OUTPUT: [
+		{ id: 'output1', label: 'Out 12G' },
+		{ id: 'output2', label: 'Out 3G' },
+	],
+
+	CHOICES_OSD_MODE: [
+		{ id: 'on', label: 'On' },
+		{ id: 'off', label: 'Off' },
+		{ id: 'toggle', label: 'Toggle' },
+	],
+
+	/** Champs OSD avec expression / variables (style ATEM). */
+	OSD_OUTPUT_OPTION: {
+		type: 'dropdown',
+		label: 'Sortie',
+		id: 'output',
+		default: 'output1',
+		choices: [
+			{ id: 'output1', label: 'Out 12G' },
+			{ id: 'output2', label: 'Out 3G' },
+		],
+		expressionDescription: 'output1 ou output2 (12G / 3G)',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
+	OSD_MODE_OPTION: {
+		type: 'dropdown',
+		label: 'Mode',
+		id: 'mode',
+		default: 'toggle',
+		choices: [
+			{ id: 'on', label: 'On' },
+			{ id: 'off', label: 'Off' },
+			{ id: 'toggle', label: 'Toggle' },
+		],
+		expressionDescription: 'on, off ou toggle',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
 	// ########################
 	// #### PT, Zoom, Focus Speed Look Ups ####
 	// ########################

@@ -145,6 +145,10 @@ module.exports = {
 		if (SERIES.variables.colorBars == true) {
 			variables.push({ variableId: 'colorBars', name: 'Color Bars ON/OFF' })
 		}
+		if (SERIES.variables.osd == true) {
+			variables.push({ variableId: 'osdOut12G', name: 'OSD Out 12G ON/OFF' })
+			variables.push({ variableId: 'osdOut3G', name: 'OSD Out 3G ON/OFF' })
+		}
 
 		//Recall Preset
 		if (SERIES.variables.presetNames == true) {
@@ -500,6 +504,10 @@ module.exports = {
 			}
 
 			variableValues.colorBars = self.data.colorBars;
+			if (SERIES.variables.osd == true) {
+				variableValues.osdOut12G = self.data.osdOut12G;
+				variableValues.osdOut3G = self.data.osdOut3G;
+			}
 
 			//Recall Preset
 			if (SERIES.variables.presetNames == true) {

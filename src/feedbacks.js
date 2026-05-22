@@ -538,6 +538,57 @@ module.exports = {
 			}
 		}
 
+		if (SERIES.feedbacks.osd == true) {
+			feedbacks.osd = {
+				type: 'boolean',
+				name: 'Other - OSD State (Out 12G / Out 3G)',
+				description: 'Indicate if on-screen display (OSD) is ON or OFF for Out 12G or Out 3G',
+				defaultStyle: {
+					color: foregroundColor,
+					bgcolor: backgroundColorRed,
+				},
+				options: [
+					{ ...c.OSD_OUTPUT_OPTION },
+					{
+						type: 'dropdown',
+						label: 'Indicate in X State',
+						id: 'option',
+						default: '1',
+						choices: [
+							{ id: '0', label: 'OFF' },
+							{ id: '1', label: 'ON' },
+						],
+						expressionDescription: '0 (off) ou 1 (on)',
+						allowInvalidValues: true,
+						allowCustom: true,
+					},
+				],
+				callback: async function (feedback, bank) {
+					let opt = feedback.options
+					const output = await self.resolveOsdOutput(opt.output)
+					const state = self.getOsdState(output)
+					const option = (await self.parseVariablesInString(String(opt.option ?? '1'))).toLowerCase().trim()
+					switch (option) {
+						case '0':
+						case 'off':
+							if (state === 'off') {
+								return true
+							}
+							break
+						case '1':
+						case 'on':
+							if (state === 'on') {
+								return true
+							}
+							break
+						default:
+							break
+					}
+					return false
+				},
+			}
+		}
+
 		if (SERIES.feedbacks.presetLastUsed == true) {
 			feedbacks.lastUsedPset = {
 				type: 'boolean',

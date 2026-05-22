@@ -2447,6 +2447,80 @@ module.exports = {
 			}
 		}
 
+		if (s.osd == true) {
+			presets.osdOut12GOnOff = {
+				category: 'Other',
+				type: 'button',
+				name: 'OSD Out 12G Toggle',
+				style: {
+					text: 'OSD 12G\\nTOGGLE',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'osd',
+								options: { output: 'output1', mode: 'toggle' },
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'osd',
+						options: {
+							output: 'output1',
+							option: '1',
+						},
+						style: {
+							color: foregroundColor,
+							bgcolor: backgroundColorRed,
+						},
+					},
+				],
+			}
+
+			presets.osdOut3GOnOff = {
+				category: 'Other',
+				type: 'button',
+				name: 'OSD Out 3G Toggle',
+				style: {
+					text: 'OSD 3G\\nTOGGLE',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'osd',
+								options: { output: 'output2', mode: 'toggle' },
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'osd',
+						options: {
+							output: 'output2',
+							option: '1',
+						},
+						style: {
+							color: foregroundColor,
+							bgcolor: backgroundColorRed,
+						},
+					},
+				],
+			}
+		}
+
 		// ###########################
 		// #### Load/Save Presets ####
 		// ###########################

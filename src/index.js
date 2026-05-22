@@ -37,6 +37,7 @@ class canonptzInstance extends InstanceBase {
 
 		this.ptzCommand = 'control.cgi?'
 		this.powerCommand = 'standby.cgi?'
+		this.menuCommand = 'menu.cgi?'
 		this.savePresetCommand = 'preset/set?'
 		this.traceCommand = 'trace/'
 		this.maintainCommand = 'maintain?'
@@ -145,6 +146,8 @@ class canonptzInstance extends InstanceBase {
 	
 			//Other
 			colorBars: '',
+			osdOut12G: '',
+			osdOut3G: '',
 
 			//Recall Preset
 			presetCount: 100,

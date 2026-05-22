@@ -1935,6 +1935,16 @@ module.exports = {
 			}
 		}
 
+		if (s.osd == true) {
+			actions.osd = {
+				name: 'PTZ Other - OSD',
+				options: [c.OSD_OUTPUT_OPTION, c.OSD_MODE_OPTION],
+				callback: async (action) => {
+					await self.applyOsd(action.options.output, action.options.mode)
+				},
+			}
+		}
+
 		// #########################
 		// #### Presets Actions ####
 		// #########################
