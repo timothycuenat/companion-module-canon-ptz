@@ -100,6 +100,22 @@ module.exports = {
 		allowCustom: true,
 	},
 
+	/** control.cgi f.rec=on|off (cinéma XF-605, C300/C500/C70) — f.rec.status: idle|rec */
+	CAMERA_REC_MODE_OPTION: {
+		type: 'dropdown',
+		label: 'Enregistrement',
+		id: 'mode',
+		default: 'toggle',
+		choices: [
+			{ id: 'start', label: 'Start (REC)' },
+			{ id: 'stop', label: 'Stop' },
+			{ id: 'toggle', label: 'Toggle' },
+		],
+		expressionDescription: 'start, stop ou toggle',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
 	/** on / off / toggle pour fonctions admin/config (da05, db09-0, …). */
 	ADMIN_CONFIG_MODE_OPTION: {
 		type: 'dropdown',

@@ -372,6 +372,9 @@ module.exports = {
 				case 'c.1.colorbar':
 					self.data.colorBars = str[1];
 					break;
+				case 'f.rec.status':
+					self.applyRecPollValue(str[1]);
+					break;
 				// m.onscreen = état de la dernière sortie modifiée (ne pas l'associer à 12G).
 				case 'm.onscreen': {
 					const guard = self.osdPollGuard

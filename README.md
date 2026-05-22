@@ -43,6 +43,21 @@ Base commune : `lg=ja&pt=4&em=2&…` — `Content-Type: text/plain`
 - **PTZ (CR-N\*)** : `control.cgi?wb.kelvin.cc=<valeur>`
 - **Autres (CR-X, XF-605, C300/C500/C70, Other)** : `control.cgi?c.1.wb.kelvin.cc=<valeur>`
 
+## Camera Record (feature `feature/camera-rec`)
+
+Protocole Canon XC — **cinéma uniquement** (XF-605, C300/C500/C70, série Other).  
+Les PTZ CR-N **n’ont pas** `f.rec` dans la spec XC.
+
+| Commande | Effet |
+|----------|--------|
+| `control.cgi?f.rec=on` | Démarrer l’enregistrement |
+| `control.cgi?f.rec=off` | Arrêter |
+| Poll `info.cgi` → `f.rec.status` | `idle` ou `rec` |
+
+- Action **Camera - Record** : start / stop / toggle (dynamique)
+- Variables `recordStatus`, `recordStatusLabel`
+- Feedback + preset **Record Toggle**
+
 ## Save Settings
 
 - Action **PTZ Other - Save Settings** : `control.cgi?s.action=save` (GET)

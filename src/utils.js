@@ -319,6 +319,101 @@ module.exports = {
 		self.getCameraInformation_Delayed()
 	},
 
+	getRecordStatus() {
+		return this.data.recordStatus || ''
+	},
+
+	setRecordStatus(value) {
+		const self = this
+		self.data.recordStatus = value
+		self.checkVariables()
+		self.checkFeedbacks()
+	},
+
+	applyRecPollValue(value) {
+		const self = this
+		if (!self.shouldApplyRecPollValue(value)) {
+			return
+		}
+		self.setRecordStatus(value)
+	},
+
+	/** Après f.rec=on/off : garder l’état commandé jusqu’à confirmation poll (pas de timer court). */
+	beginRecPollGuard(expectedStatus) {
+		const self = this
+		self.recPollGuard = {
+			expected: expectedStatus,
+			commandedAt: Date.now(),
+		}
+	},
+
+	shouldApplyRecPollValue(value) {
+		const self = this
+		const guard = self.recPollGuard
+		if (!guard) {
+			return true
+		}
+		if (value === guard.expected) {
+			self.recPollGuard = null
+			return true
+		}
+		// Poll obsolète (ex. encore rec après stop) : ignorer jusqu’à confirmation ou timeout long
+		const maxWaitMs = 15000
+		if (Date.now() - guard.commandedAt > maxWaitMs) {
+			self.log(
+				'warn',
+				`Record status : pas de confirmation ${guard.expected} après ${maxWaitMs / 1000}s, application de f.rec.status=${value}.`
+			)
+			self.recPollGuard = null
+			return true
+		}
+		return false
+	},
+
+	getRecordStatusLabel() {
+		const s = this.getRecordStatus()
+		if (s === 'rec') {
+			return 'REC'
+		}
+		if (s === 'idle') {
+			return 'STOP'
+		}
+		return s || ''
+	},
+
+	async resolveCameraRecMode(value) {
+		const self = this
+		const str = (await self.parseVariablesInString(String(value ?? ''))).toLowerCase().trim()
+		if (str === 'toggle' || str === 't' || str.startsWith('tog')) {
+			return 'toggle'
+		}
+		if (str === 'start' || str === 'on' || str === '1' || str === 'rec') {
+			return 'start'
+		}
+		if (str === 'stop' || str === 'off' || str === '0' || str === 'idle') {
+			return 'stop'
+		}
+		return 'toggle'
+	},
+
+	async applyCameraRec(mode, cmdPrefix) {
+		const self = this
+		const resolved = await self.resolveCameraRecMode(mode)
+		let recValue
+		if (resolved === 'toggle') {
+			recValue = self.getRecordStatus() === 'rec' ? 'off' : 'on'
+		} else if (resolved === 'start') {
+			recValue = 'on'
+		} else {
+			recValue = 'off'
+		}
+		const nextStatus = recValue === 'on' ? 'rec' : 'idle'
+		self.beginRecPollGuard(nextStatus)
+		self.setRecordStatus(nextStatus)
+		await self.sendPTZ(self.ptzCommand, `${cmdPrefix}${recValue}`)
+		self.getCameraInformation_Delayed()
+	},
+
 	isSaveSettingsResponseOk(result) {
 		if (!result || result.status !== 'ok' || !result.response) {
 			return false

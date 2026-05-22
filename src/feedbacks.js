@@ -528,6 +528,22 @@ module.exports = {
 			}
 		}
 
+		if (SERIES.feedbacks.cameraRec == true) {
+			feedbacks.cameraRec = {
+				type: 'boolean',
+				name: 'Camera - Recording',
+				description: 'Actif quand l’enregistrement est en cours (f.rec.status=rec)',
+				defaultStyle: {
+					color: foregroundColor,
+					bgcolor: backgroundColorRed,
+				},
+				options: [],
+				callback: function () {
+					return self.getRecordStatus() === 'rec'
+				},
+			}
+		}
+
 		if (SERIES.feedbacks.saveSettings == true) {
 			feedbacks.saveSettings = {
 				type: 'boolean',

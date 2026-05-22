@@ -2607,6 +2607,41 @@ module.exports = {
 			}
 		}
 
+		if (s.cameraRec && s.cameraRec.cmd) {
+			presets.cameraRecToggle = {
+				category: 'Camera',
+				type: 'button',
+				name: 'Record Toggle',
+				style: {
+					text: '$(canon-ptz:recordStatusLabel)',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'cameraRec',
+								options: { mode: 'toggle' },
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'cameraRec',
+						options: {},
+						style: {
+							color: foregroundColor,
+							bgcolor: backgroundColorRed,
+						},
+					},
+				],
+			}
+		}
+
 		if (s.saveSettings == true) {
 			presets.saveSettings = {
 				category: 'Other',

@@ -141,6 +141,10 @@ module.exports = {
 			variables.push({ variableId: 'kelvinCcValue', name: 'Kelvin CC Value (-20 to +20)' })
 			variables.push({ variableId: 'kelvinCcLabel', name: 'Kelvin CC Label (+/-)' })
 		}
+		if (SERIES.variables.recordStatus == true) {
+			variables.push({ variableId: 'recordStatus', name: 'Record Status (idle/rec)' })
+			variables.push({ variableId: 'recordStatusLabel', name: 'Record Status Label (STOP/REC)' })
+		}
 		if (SERIES.variables.rGainValue == true) {
 			variables.push({ variableId: 'rGainValue', name: 'Red Gain Value' })
 		}
@@ -511,6 +515,10 @@ module.exports = {
 			if (SERIES.variables.kelvinCcValue == true) {
 				variableValues.kelvinCcValue = self.data.kelvinCcValue;
 				variableValues.kelvinCcLabel = self.formatKelvinCcLabel(self.data.kelvinCcValue);
+			}
+			if (SERIES.variables.recordStatus == true) {
+				variableValues.recordStatus = self.data.recordStatus;
+				variableValues.recordStatusLabel = self.getRecordStatusLabel();
 			}
 
 			if (SERIES.variables.rGainValue == true) {

@@ -902,6 +902,7 @@ module.exports = {
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
 				kelvinCcValue: true, //kelvin CC adjustment -20..+20
+				recordStatus: true, //f.rec.status idle|rec
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -924,6 +925,7 @@ module.exports = {
 				autoIrisMode: true, //iris mode is auto or manual
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
+				cameraRec: true, //recording in progress (f.rec.status)
 				presetLastUsed: true, //preset last recalled
 				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
@@ -935,6 +937,7 @@ module.exports = {
 				cameraName: true, //Supports Custom Camera Name
 				digitalZoom: true, //Supports Digital Zoom
 				imageStabilization: true, //Supports Image Stabilization
+				cameraRec: { cmd: 'f.rec=' }, // Record/Stop movie (on/off)
 				panTilt: false, // Has Pan/Tilt Support
 				ptSpeed: true, // Internal Speed Options
 				zoom: true, // Has Zoom Support
@@ -1004,6 +1007,7 @@ module.exports = {
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
 				kelvinCcValue: true, //kelvin CC adjustment -20..+20
+				recordStatus: true, //f.rec.status idle|rec
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -1026,6 +1030,7 @@ module.exports = {
 				autoIrisMode: true, //iris mode is auto or manual
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
+				cameraRec: true, //recording in progress (f.rec.status)
 				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
 				saveSettings: true, //brief OK feedback after successful save (s.action=save)
@@ -1038,6 +1043,7 @@ module.exports = {
 				cameraName: true, //Supports Custom Camera Name
 				digitalZoom: true, //Supports Digital Zoom
 				imageStabilization: true, //Supports Image Stabilization
+				cameraRec: { cmd: 'f.rec=' }, // Record/Stop movie (on/off)
 				panTilt: true, // Has Pan/Tilt Support
 				ptSpeed: true, // Internal Speed Options
 				zoom: true, // Has Zoom Support

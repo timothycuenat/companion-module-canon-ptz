@@ -2015,6 +2015,16 @@ module.exports = {
 			}
 		}
 
+		if (s.cameraRec && s.cameraRec.cmd) {
+			actions.cameraRec = {
+				name: 'Camera - Record',
+				options: [c.CAMERA_REC_MODE_OPTION],
+				callback: async (action) => {
+					await self.applyCameraRec(action.options.mode, s.cameraRec.cmd)
+				},
+			}
+		}
+
 		// #########################
 		// #### Presets Actions ####
 		// #########################

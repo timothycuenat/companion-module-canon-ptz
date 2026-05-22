@@ -46,6 +46,8 @@ class canonptzInstance extends InstanceBase {
 
 		this.saveSettingsOkUntil = 0
 		this.saveSettingsOkTimer = null
+
+		this.recPollGuard = null
 	}
 
 	async destroy() {
@@ -162,6 +164,7 @@ class canonptzInstance extends InstanceBase {
 			osdOut3G: '',
 			verticalFlip: '',
 			adminTally: '',
+			recordStatus: '',
 
 			//Recall Preset
 			presetCount: 100,
