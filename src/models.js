@@ -157,6 +157,8 @@ module.exports = {
 				bGainValue: true, //current b gain value
 				//other
 				osd: true, //on-screen display on/off per output (menu.cgi)
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -214,6 +216,8 @@ module.exports = {
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
 				osd: true, //on-screen display on/off per output
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				presets: true, //save, recall, set preset recall mode,
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -462,6 +466,8 @@ module.exports = {
 				//other
 				colorBars: true, //camera color bars state is on/off
 				osd: true, //on-screen display on/off per output (menu.cgi)
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -521,6 +527,8 @@ module.exports = {
 				wbPreset: true,
 				colorBars: true, //camera color bars state is on/off
 				osd: true, //on-screen display on/off per output
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				presets: true, //save, recall, set preset recall mode
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -568,6 +576,8 @@ module.exports = {
 				bGainValue: true, //current b gain value
 				//other
 				osd: true, //on-screen display on/off per output (menu.cgi)
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				//recall preset
 				presetNames: true, // preset stored names as variables
 				presetLastUsed: true, //preset last recalled
@@ -625,6 +635,8 @@ module.exports = {
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
 				osd: true, //on-screen display on/off per output
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				presets: true, //save, recall, set preset recall mode
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
@@ -926,6 +938,8 @@ module.exports = {
 				powerState: true, //camera is on or off (idle or standby)
 				cameraName: true, //name of camera
 				osd: true, //on-screen display on/off per output (menu.cgi)
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				firmwareVersion: true, //firmware version
 				protocolVersion: true, //protocol version
 				macAddress: true, //MAC address
@@ -1010,6 +1024,8 @@ module.exports = {
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
 				osd: true, //on-screen display on/off per output
+				verticalFlip: true, //vertical image flip (admin/config da05)
+				adminTally: true, //tally light via admin/config db09-0
 				presets: true, // Can Save and Recall Presets
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control

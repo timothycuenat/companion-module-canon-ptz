@@ -2447,6 +2447,58 @@ module.exports = {
 			}
 		}
 
+		if (self.isAdminTallyEnabled(s.adminTally)) {
+			presets.adminTallyToggle = {
+				category: 'Other',
+				type: 'button',
+				name: 'Tally (admin) Toggle',
+				style: {
+					text: 'TALLY\\n$(canon-ptz:adminTally)',
+					size: '7',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'adminTally',
+								options: { mode: 'toggle' },
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [],
+			}
+		}
+
+		if (self.isVerticalFlipEnabled(s.verticalFlip)) {
+			presets.verticalFlipToggle = {
+				category: 'Other',
+				type: 'button',
+				name: 'Vertical Flip Toggle',
+				style: {
+					text: 'VERT\\nFLIP\\n$(canon-ptz:verticalFlip)',
+					size: '7',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'verticalFlip',
+								options: { mode: 'toggle' },
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [],
+			}
+		}
+
 		if (s.osd == true) {
 			presets.osdOut12GOnOff = {
 				category: 'Other',

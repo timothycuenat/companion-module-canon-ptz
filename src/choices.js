@@ -41,6 +41,22 @@ module.exports = {
 		allowCustom: true,
 	},
 
+	/** on / off / toggle pour fonctions admin/config (da05, db09-0, …). */
+	ADMIN_CONFIG_MODE_OPTION: {
+		type: 'dropdown',
+		label: 'Mode',
+		id: 'mode',
+		default: 'toggle',
+		choices: [
+			{ id: 'on', label: 'On' },
+			{ id: 'off', label: 'Off' },
+			{ id: 'toggle', label: 'Toggle' },
+		],
+		expressionDescription: 'on, off ou toggle',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
 	// ########################
 	// #### PT, Zoom, Focus Speed Look Ups ####
 	// ########################

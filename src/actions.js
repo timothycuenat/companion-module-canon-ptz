@@ -1945,6 +1945,26 @@ module.exports = {
 			}
 		}
 
+		if (self.isVerticalFlipEnabled(s.verticalFlip)) {
+			actions.verticalFlip = {
+				name: 'PTZ Other - Vertical Flip (Image)',
+				options: [c.ADMIN_CONFIG_MODE_OPTION],
+				callback: async (action) => {
+					await self.applyVerticalFlip(action.options.mode)
+				},
+			}
+		}
+
+		if (self.isAdminTallyEnabled(s.adminTally)) {
+			actions.adminTally = {
+				name: 'PTZ Other - Tally (admin/config)',
+				options: [c.ADMIN_CONFIG_MODE_OPTION],
+				callback: async (action) => {
+					await self.applyAdminTally(action.options.mode)
+				},
+			}
+		}
+
 		// #########################
 		// #### Presets Actions ####
 		// #########################

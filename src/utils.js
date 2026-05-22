@@ -1,4 +1,17 @@
 module.exports = {
+	isAdminConfigFeatureEnabled(seriesFlag) {
+		const self = this
+		return seriesFlag === true || !!(self.config.adminAuthToken || '').trim()
+	},
+
+	isVerticalFlipEnabled(seriesFlag) {
+		return this.isAdminConfigFeatureEnabled(seriesFlag)
+	},
+
+	isAdminTallyEnabled(seriesFlag) {
+		return this.isAdminConfigFeatureEnabled(seriesFlag)
+	},
+
 	getOsdState(output) {
 		const self = this
 		if (output === 'output2') {
@@ -96,6 +109,73 @@ module.exports = {
 			return 'off'
 		}
 		return 'toggle'
+	},
+
+	async resolveVerticalFlipMode(value) {
+		return this.resolveOsdMode(value)
+	},
+
+	setVerticalFlipState(value) {
+		const self = this
+		self.data.verticalFlip = value
+		self.checkVariables()
+	},
+
+	async applyVerticalFlip(mode) {
+		const self = this
+		await self.applyAdminConfigFeature({
+			featureLabel: 'Vertical flip',
+			mode,
+			getState: () => self.data.verticalFlip,
+			bodyForState: (state) => self.verticalFlipBodyForState(state),
+			setState: (state) => self.setVerticalFlipState(state),
+		})
+	},
+
+	setAdminTallyState(value) {
+		const self = this
+		self.data.adminTally = value
+		self.checkVariables()
+	},
+
+	async applyAdminTally(mode) {
+		const self = this
+		await self.applyAdminConfigFeature({
+			featureLabel: 'Tally (admin)',
+			mode,
+			getState: () => self.data.adminTally,
+			bodyForState: (state) => self.adminTallyBodyForState(state),
+			setState: (state) => self.setAdminTallyState(state),
+		})
+	},
+
+	async applyAdminConfigFeature({ featureLabel, mode, getState, bodyForState, setState }) {
+		const self = this
+		if (!(self.config.adminAuthToken || '').trim()) {
+			self.log('warn', `${featureLabel} : renseignez le jeton Basic Auth dans la config du module.`)
+			return
+		}
+		const resolvedMode = await self.resolveOsdMode(mode)
+		let next
+		if (resolvedMode === 'toggle') {
+			next = getState() === 'on' ? 'off' : 'on'
+		} else {
+			next = resolvedMode
+		}
+		const body = bodyForState(next)
+		const result = await self.postAdminConfig(body)
+		if (result.status === 'ok') {
+			setState(next)
+			self.log('info', `${featureLabel} : ${next} (admin/config OK)`)
+		} else {
+			const detail =
+				result.reason === 'no_token'
+					? 'jeton manquant'
+					: result.httpStatus
+						? `HTTP ${result.httpStatus}`
+						: result.reason || 'échec'
+			self.log('warn', `${featureLabel} : commande non appliquée (${detail}).`)
+		}
 	},
 
 	async applyOsd(output, mode) {

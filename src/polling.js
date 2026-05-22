@@ -360,11 +360,17 @@ module.exports = {
 					self.data.colorBars = str[1];
 					break;
 				// m.onscreen = état de la dernière sortie modifiée (ne pas l'associer à 12G).
-				case 'm.onscreen':
-					if (self.osdPollGuard && self.shouldApplyOsdPollValue(self.osdPollGuard.changedOutput)) {
-						self.applyOsdPollValue(self.osdPollGuard.changedOutput, str[1])
+				case 'm.onscreen': {
+					const guard = self.osdPollGuard
+					if (!guard) {
+						break
 					}
-					break;
+					const output = guard.changedOutput
+					if (self.shouldApplyOsdPollValue(output)) {
+						self.applyOsdPollValue(output, str[1])
+					}
+					break
+				}
 				case 'm.output1.onscreen':
 					self.applyOsdPollValue('output1', str[1])
 					break;

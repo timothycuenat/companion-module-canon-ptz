@@ -105,6 +105,35 @@ module.exports = {
 			},
 			{
 				type: 'static-text',
+				id: 'adminConfigInfo',
+				width: 12,
+				label: 'Admin API (retournement vertical)',
+				value:
+					'Fonctions <code>POST /admin/config</code> (flip vertical <code>da05</code>, tally <code>db09-0</code>) — pas de lecture d’état caméra. Jeton Basic = valeur après <code>Basic </code> dans Authorization. Variables = dernière commande réussie.',
+			},
+			{
+				type: 'textinput',
+				id: 'adminAuthToken',
+				label: 'Jeton Basic Auth (admin/config)',
+				width: 8,
+				default: '',
+			},
+			{
+				type: 'textinput',
+				id: 'adminConfigPath',
+				label: 'Chemin admin/config (défaut: /admin/config)',
+				width: 6,
+				default: '/admin/config',
+			},
+			{
+				type: 'static-text',
+				id: 'dummy3',
+				width: 12,
+				label: ' ',
+				value: ' ',
+			},
+			{
+				type: 'static-text',
 				id: 'Info',
 				width: 12,
 				label: 'Other Settings',

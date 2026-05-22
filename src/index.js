@@ -13,6 +13,7 @@ const polling = require('./polling')
 const utils = require('./utils')
 
 const tracking = require('./tracking')
+const admin = require('./admin')
 
 class canonptzInstance extends InstanceBase {
 	constructor(internal) {
@@ -28,6 +29,7 @@ class canonptzInstance extends InstanceBase {
 			...polling,
 			...utils,
 			...tracking,
+			...admin,
 		})
 
 		//global vars here
@@ -148,6 +150,8 @@ class canonptzInstance extends InstanceBase {
 			colorBars: '',
 			osdOut12G: '',
 			osdOut3G: '',
+			verticalFlip: '',
+			adminTally: '',
 
 			//Recall Preset
 			presetCount: 100,

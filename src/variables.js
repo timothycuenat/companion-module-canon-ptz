@@ -149,6 +149,18 @@ module.exports = {
 			variables.push({ variableId: 'osdOut12G', name: 'OSD Out 12G ON/OFF' })
 			variables.push({ variableId: 'osdOut3G', name: 'OSD Out 3G ON/OFF' })
 		}
+		if (self.isVerticalFlipEnabled(SERIES.variables.verticalFlip)) {
+			variables.push({
+				variableId: 'verticalFlip',
+				name: 'Vertical Flip (dernière commande on/off)',
+			})
+		}
+		if (self.isAdminTallyEnabled(SERIES.variables.adminTally)) {
+			variables.push({
+				variableId: 'adminTally',
+				name: 'Tally admin/config (dernière commande on/off)',
+			})
+		}
 
 		//Recall Preset
 		if (SERIES.variables.presetNames == true) {
@@ -507,6 +519,12 @@ module.exports = {
 			if (SERIES.variables.osd == true) {
 				variableValues.osdOut12G = self.data.osdOut12G;
 				variableValues.osdOut3G = self.data.osdOut3G;
+			}
+			if (self.isVerticalFlipEnabled(SERIES.variables.verticalFlip)) {
+				variableValues.verticalFlip = self.data.verticalFlip;
+			}
+			if (self.isAdminTallyEnabled(SERIES.variables.adminTally)) {
+				variableValues.adminTally = self.data.adminTally;
 			}
 
 			//Recall Preset
