@@ -1738,6 +1738,59 @@ module.exports = {
 			}
 		}
 
+		if (s.kelvinCc && s.kelvinCc.cmd) {
+			const wbCcChoices = c.CHOICES_WB_CC()
+			const wbCcDropdown = {
+				...c.WB_CC_VALUE_DROPDOWN_OPTION,
+				choices: wbCcChoices,
+			}
+
+			if (self.data.kelvinCcValue !== '') {
+				self.kelvinCcIndex = self.kelvinCcIndexForValue(self.data.kelvinCcValue)
+				self.kelvinCcValue = self.clampKelvinCcValue(self.data.kelvinCcValue)
+			}
+
+			actions.kelvinCcUp = {
+				name: 'White Balance - CC Value Up',
+				options: [],
+				callback: async () => {
+					if (self.kelvinCcIndex < wbCcChoices.length - 1) {
+						self.kelvinCcIndex++
+					}
+					await self.applyKelvinCc(self.kelvinCcValueForIndex(self.kelvinCcIndex), s.kelvinCc.cmd)
+				},
+			}
+
+			actions.kelvinCcDown = {
+				name: 'White Balance - CC Value Down',
+				options: [],
+				callback: async () => {
+					if (self.kelvinCcIndex > 0) {
+						self.kelvinCcIndex--
+					}
+					await self.applyKelvinCc(self.kelvinCcValueForIndex(self.kelvinCcIndex), s.kelvinCc.cmd)
+				},
+			}
+
+			actions.kelvinCcSet = {
+				name: 'White Balance - Set CC Value',
+				options: [
+					c.WB_CC_VALUE_OPTION,
+					wbCcDropdown,
+					c.WB_CC_VALUE_TEXT_OPTION,
+				],
+				callback: async (action) => {
+					let cc
+					if (action.options.use_variables) {
+						cc = await self.resolveKelvinCcValue(action.options.val_v, self.kelvinCcValue)
+					} else {
+						cc = await self.resolveKelvinCcValue(action.options.val, self.kelvinCcValue)
+					}
+					await self.applyKelvinCc(cc, s.kelvinCc.cmd)
+				},
+			}
+		}
+
 		if (s.rGain.cmd) {
 			if (s.rGain.dropdown === undefined) {
 				s.rGain.dropdown = c.CHOICES_RGAIN_OTHER();

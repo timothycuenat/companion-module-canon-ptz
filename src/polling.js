@@ -345,6 +345,12 @@ module.exports = {
 				case 'c.1.wb.kelvin':
 					self.data.kelvinValue = str[1];
 					break;
+				case 'c.1.wb.kelvin.cc':
+					self.data.kelvinCcValue = str[1];
+					self.kelvinCcIndex = self.kelvinCcIndexForValue(str[1]);
+					self.kelvinCcValue = self.clampKelvinCcValue(str[1]);
+					self.checkVariables();
+					break;
 				case 'c.1.wb.kelvin.list':
 					if (self.data.kelvinListString !== str[1]) { //only rebuild the actions if the list has changed
 						self.data.kelvinListString = str[1];

@@ -278,6 +278,47 @@ module.exports = {
 		return order[(idx + 1) % order.length]
 	},
 
+	clampKelvinCcValue(value) {
+		const n = parseInt(String(value ?? ''), 10)
+		if (Number.isNaN(n)) {
+			return 0
+		}
+		return Math.max(-20, Math.min(20, n))
+	},
+
+	kelvinCcIndexForValue(value) {
+		return this.clampKelvinCcValue(value) + 20
+	},
+
+	kelvinCcValueForIndex(index) {
+		return index - 20
+	},
+
+	formatKelvinCcLabel(value) {
+		const n = this.clampKelvinCcValue(value)
+		return n > 0 ? `+${n}` : String(n)
+	},
+
+	async resolveKelvinCcValue(raw, fallback = 0) {
+		const self = this
+		const str = (await self.parseVariablesInString(String(raw ?? ''))).trim()
+		if (!str) {
+			return self.clampKelvinCcValue(fallback)
+		}
+		return self.clampKelvinCcValue(str)
+	},
+
+	async applyKelvinCc(value, cmdPrefix) {
+		const self = this
+		const cc = self.clampKelvinCcValue(value)
+		self.kelvinCcIndex = self.kelvinCcIndexForValue(cc)
+		self.kelvinCcValue = cc
+		self.data.kelvinCcValue = String(cc)
+		self.checkVariables()
+		await self.sendPTZ(self.ptzCommand, `${cmdPrefix}${cc}`)
+		self.getCameraInformation_Delayed()
+	},
+
 	isSaveSettingsResponseOk(result) {
 		if (!result || result.status !== 'ok' || !result.response) {
 			return false

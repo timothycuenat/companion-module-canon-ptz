@@ -137,6 +137,10 @@ module.exports = {
 		if (SERIES.variables.kelvinValue == true) {
 			variables.push({ variableId: 'kelvinValue', name: 'Kelvin Value' })
 		}
+		if (SERIES.variables.kelvinCcValue == true) {
+			variables.push({ variableId: 'kelvinCcValue', name: 'Kelvin CC Value (-20 to +20)' })
+			variables.push({ variableId: 'kelvinCcLabel', name: 'Kelvin CC Label (+/-)' })
+		}
 		if (SERIES.variables.rGainValue == true) {
 			variables.push({ variableId: 'rGainValue', name: 'Red Gain Value' })
 		}
@@ -503,6 +507,10 @@ module.exports = {
 					let value = kelvin.label;
 					variableValues.kelvinValue = value;
 				}
+			}
+			if (SERIES.variables.kelvinCcValue == true) {
+				variableValues.kelvinCcValue = self.data.kelvinCcValue;
+				variableValues.kelvinCcLabel = self.formatKelvinCcLabel(self.data.kelvinCcValue);
 			}
 
 			if (SERIES.variables.rGainValue == true) {

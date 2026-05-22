@@ -2257,6 +2257,60 @@ module.exports = {
 			}
 		}
 
+		if (s.kelvinCc && s.kelvinCc.cmd) {
+			presets.kelvinCcUp = {
+				category: 'White Balance',
+				type: 'button',
+				name: 'CC Value Up',
+				style: {
+					text: 'CC\\nUP',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [{ actionId: 'kelvinCcUp', options: {} }],
+						up: [],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets.kelvinCcDown = {
+				category: 'White Balance',
+				type: 'button',
+				name: 'CC Value Down',
+				style: {
+					text: 'CC\\nDOWN',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [{ actionId: 'kelvinCcDown', options: {} }],
+						up: [],
+					},
+				],
+				feedbacks: [],
+			}
+
+			presets.showKelvinCcValue = {
+				category: 'White Balance',
+				type: 'button',
+				name: 'CC Value',
+				style: {
+					text: 'CC\\n$(canon-ptz:kelvinCcLabel)',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [],
+				feedbacks: [],
+			}
+		}
+
 		if (s.rGain.cmd) {
 			presets.redGainUp = {
 				category: 'White Balance',

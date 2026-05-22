@@ -35,6 +35,14 @@ Base commune : `lg=ja&pt=4&em=2&…` — `Content-Type: text/plain`
 - Variables `digitalZoom`, `digitalZoomLabel`, `digitalZoomMag`, `digitalZoomMagLabel`
 - Migration depuis `bol`, ancien `mode` on/off/toggle, feedbacks `option` 0/1
 
+## White Balance CC (feature `feature/whitebalance-cc`)
+
+- **CC Value Up / Down** : pas de ±1 (-20 … +20)
+- **Set CC Value** : liste ou champ variable/expression
+- Variables `kelvinCcValue`, `kelvinCcLabel`
+- **PTZ (CR-N\*)** : `control.cgi?wb.kelvin.cc=<valeur>`
+- **Autres (CR-X, XF-605, C300/C500/C70, Other)** : `control.cgi?c.1.wb.kelvin.cc=<valeur>`
+
 ## Save Settings
 
 - Action **PTZ Other - Save Settings** : `control.cgi?s.action=save` (GET)

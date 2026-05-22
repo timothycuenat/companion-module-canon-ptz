@@ -152,6 +152,7 @@ class canonptzInstance extends InstanceBase {
 			kelvinValue: '2000',
 			kelvinListString: '',
 			kelvinList: null,
+			kelvinCcValue: '0',
 			rGainValue: '0',
 			bGainValue: '0',
 	
@@ -198,6 +199,8 @@ class canonptzInstance extends InstanceBase {
 		this.whitebalanceModeIndex = 0;
 		this.kelvinIndex = 0
 		this.kelvinValue = 2820
+		this.kelvinCcIndex = 20
+		this.kelvinCcValue = 0
 		this.rGainIndex = 50
 		this.rGainValue = 0
 		this.bGainIndex = 50

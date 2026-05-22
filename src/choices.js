@@ -624,6 +624,43 @@ module.exports = {
 		return p
 	},
 
+	/** WB Kelvin CC : -20 … +20 (control.cgi wb.kelvin.cc=) */
+	CHOICES_WB_CC: function () {
+		const p = []
+		for (let i = -20; i <= 20; i++) {
+			const label = i > 0 ? `+${i}` : String(i)
+			p.push({ id: String(i), label: `CC ${label}` })
+		}
+		return p
+	},
+
+	WB_CC_VALUE_OPTION: {
+		type: 'checkbox',
+		label: 'Use variables as CC Value',
+		id: 'use_variables',
+		default: false,
+	},
+
+	WB_CC_VALUE_DROPDOWN_OPTION: {
+		type: 'dropdown',
+		label: 'CC Value (-20 to +20)',
+		id: 'val',
+		default: '0',
+		choices: [], // filled in initActions
+		isVisible: (options) => !options['use_variables'],
+	},
+
+	WB_CC_VALUE_TEXT_OPTION: {
+		type: 'textinput',
+		label: 'CC Value (-20 to +20)',
+		id: 'val_v',
+		default: '0',
+		useVariables: true,
+		expressionDescription: 'entier de -20 à +20',
+		allowInvalidValues: true,
+		isVisible: (options) => !!options['use_variables'],
+	},
+
 	// ###########################
 	// #### R GAIN Look Ups   ####
 	// ###########################

@@ -12,6 +12,9 @@ module.exports = {
 		{ id: 'Canon CR-X300', series: 'CR-X300', label: 'Canon CR-X300' },
 		{ id: 'Canon CR-X500', series: 'CR-X500', label: 'Canon CR-X500' },
 		{ id: 'Canon XF-605', series: 'XF-605', label: 'Canon XF-605' },
+		{ id: 'Canon C300 MkIII', series: 'Other', label: 'Canon C300 MkIII' },
+		{ id: 'Canon C500 MkII', series: 'Other', label: 'Canon C500 MkII' },
+		{ id: 'Canon C70', series: 'Other', label: 'Canon C70' },
 		{ id: 'Other', series: 'Other', label: 'Other Cameras' }
 	],
 
@@ -53,6 +56,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -108,6 +112,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -155,6 +160,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//other
@@ -215,6 +221,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -265,6 +272,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -320,6 +328,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -367,6 +376,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -422,6 +432,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -469,6 +480,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//other
@@ -531,6 +543,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -582,6 +595,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//other
@@ -642,6 +656,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_CRN() },
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_CRN() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_CRN() },
+				kelvinCc: { cmd: 'wb.kelvin.cc=' }, // PTZ : control.cgi?wb.kelvin.cc=
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_CRN() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_CRN() },
 				wbPreset: true,
@@ -688,6 +703,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -744,6 +760,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_OTHER() }, // Has Pedestal Support
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_OTHER() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_OTHER() },
+				kelvinCc: { cmd: 'c.1.wb.kelvin.cc=' },
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_OTHER() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
@@ -785,6 +802,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -841,6 +859,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_OTHER() }, // Has Pedestal Support
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_OTHER() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_OTHER() },
+				kelvinCc: { cmd: 'c.1.wb.kelvin.cc=' },
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_OTHER() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
@@ -882,6 +901,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -938,6 +958,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_OTHER() }, // Has Pedestal Support
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_OTHER() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_OTHER() },
+				kelvinCc: { cmd: 'c.1.wb.kelvin.cc=' },
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_OTHER() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
@@ -982,6 +1003,7 @@ module.exports = {
 				//white balance
 				whitebalanceMode: true, //white balance mode auto, manual, wb_a, wb_b, daylight, tungsten, kelvin
 				kelvinValue: true, //current kelvin value
+				kelvinCcValue: true, //kelvin CC adjustment -20..+20
 				rGainValue: true, //current r gain value
 				bGainValue: true, //current b gain value
 				//recall preset
@@ -1039,6 +1061,7 @@ module.exports = {
 				pedestal: { cmd: 'c.1.blacklevel=', dropdown: c.CHOICES_PEDESTAL_OTHER() }, // Has Pedestal Support
 				whitebalanceMode: {cmd: 'c.1.wb=', dropdown: c.CHOICES_WBMODE_OTHER() },
 				kelvin: {cmd: 'c.1.wb.kelvin=', dropdown: c.CHOICES_KELVIN_OTHER() },
+				kelvinCc: { cmd: 'c.1.wb.kelvin.cc=' },
 				rGain: {cmd: 'c.1.wb.shift.rgain=', dropdown: c.CHOICES_RGAIN_OTHER() },
 				bGain: {cmd: 'c.1.wb.shift.bgain=', dropdown: c.CHOICES_BGAIN_OTHER() },
 				wbPreset: true,
