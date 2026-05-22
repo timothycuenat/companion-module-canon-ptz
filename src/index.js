@@ -43,6 +43,9 @@ class canonptzInstance extends InstanceBase {
 		this.savePresetCommand = 'preset/set?'
 		this.traceCommand = 'trace/'
 		this.maintainCommand = 'maintain?'
+
+		this.saveSettingsOkUntil = 0
+		this.saveSettingsOkTimer = null
 	}
 
 	async destroy() {
@@ -57,6 +60,11 @@ class canonptzInstance extends InstanceBase {
 
 		if (this.pollTrackingTimer) {
 			clearInterval(this.pollTrackingTimer);
+		}
+
+		if (this.saveSettingsOkTimer) {
+			clearTimeout(this.saveSettingsOkTimer);
+			this.saveSettingsOkTimer = null;
 		}
 	}
 
@@ -85,6 +93,7 @@ class canonptzInstance extends InstanceBase {
 			tallyProgram: '',
 			tallyPreview: '',
 			digitalZoom: '',
+			digitalZoomMag: '',
 			imageStabilization: '',
 			firmwareVersion: '',
 			protocolVersion: '',

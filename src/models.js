@@ -76,6 +76,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -114,6 +115,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -181,6 +183,7 @@ module.exports = {
 				whitebalanceMode: true, //white balance mode
 				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -222,6 +225,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -284,6 +288,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -322,6 +327,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -384,6 +390,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -422,6 +429,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -491,6 +499,7 @@ module.exports = {
 				colorBars: true, //camera color bars is on or off
 				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -533,6 +542,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -600,6 +610,7 @@ module.exports = {
 				whitebalanceMode: true, //white balance mode
 				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -641,6 +652,7 @@ module.exports = {
 				timePset: true, //set preset drive recall time
 				speedPset: true, //set preset drive recall speed
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -699,6 +711,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -738,6 +751,7 @@ module.exports = {
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -794,6 +808,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -833,6 +848,7 @@ module.exports = {
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -889,6 +905,7 @@ module.exports = {
 				autoGainMode: true, //gain mode is auto or manual
 				whitebalanceMode: true, //white balance mode
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -928,6 +945,7 @@ module.exports = {
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		},
@@ -988,6 +1006,7 @@ module.exports = {
 				whitebalanceMode: true, //white balance mode
 				osd: true, //on-screen display on/off per output
 				presetLastUsed: true, //preset last recalled
+				saveSettings: true, //brief OK feedback after successful save (s.action=save)
 				presetRecallMode: true //preset recall mode is normal, time, or speed
 			},
 			actions: {
@@ -1030,6 +1049,7 @@ module.exports = {
 				speedPset: true, // Has Preset Recall Speed Control
 				timePset: true, // Has Preset Recall Time Control
 				traces: true, //prepare, start, stop traces
+				saveSettings: true, //save settings to camera (control.cgi s.action=save)
 				custom: true //allow user to send custom commands
 			}
 		}

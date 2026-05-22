@@ -23,6 +23,7 @@ module.exports = {
 				const result = await connection.sendRequest(cmd)
 
 				self.processResult(result);
+				return result
 			}
 		} catch (error) {
 			let errorText = String(error);
@@ -279,36 +280,6 @@ module.exports = {
 						cmd = 'tally=on&tally.mode=program';
 						self.data.tallyProgram = 'on';
 						self.data.tallyPreview = 'off';
-					}
-					self.sendPTZ(self.ptzCommand, cmd)
-					self.getCameraInformation_Delayed();
-				}
-			}
-		}
-
-		if (s.digitalZoom == true) {
-			actions.digitalZoom = {
-				name: 'Digital Zoom On/Off',
-				options: [
-					{
-						type: 'dropdown',
-						label: 'On/Off',
-						id: 'bol',
-						default: 0,
-						choices: [
-							{ id: 0, label: 'Off' },
-							{ id: 1, label: 'On' },
-						],
-					},
-				],
-				callback: async (action) => {
-					if (action.options.bol == 0) {
-						cmd = 'c.1.zoom.mode=off'
-						self.data.digitalZoom = 'off';
-					}
-					if (action.options.bol == 1) {
-						cmd = 'c.1.zoom.mode=dzoom'
-						self.data.digitalZoom = 'dzoom';
 					}
 					self.sendPTZ(self.ptzCommand, cmd)
 					self.getCameraInformation_Delayed();
@@ -1945,6 +1916,16 @@ module.exports = {
 			}
 		}
 
+		if (s.digitalZoom == true) {
+			actions.digitalZoom = {
+				name: 'PTZ Other - Digital Zoom',
+				options: [c.DIGITAL_ZOOM_MODE_OPTION, c.DIGITAL_ZOOM_MAG_OPTION],
+				callback: async (action) => {
+					await self.applyDigitalZoom(action.options.zoomMode, action.options.magnification)
+				},
+			}
+		}
+
 		if (self.isVerticalFlipEnabled(s.verticalFlip)) {
 			actions.verticalFlip = {
 				name: 'PTZ Other - Vertical Flip (Image)',
@@ -1961,6 +1942,22 @@ module.exports = {
 				options: [c.ADMIN_CONFIG_MODE_OPTION],
 				callback: async (action) => {
 					await self.applyAdminTally(action.options.mode)
+				},
+			}
+		}
+
+		if (s.saveSettings == true) {
+			actions.saveSettings = {
+				name: 'PTZ Other - Save Settings',
+				options: [],
+				callback: async () => {
+					const result = await self.sendPTZ(self.ptzCommand, 's.action=save')
+					if (self.isSaveSettingsResponseOk(result)) {
+						self.notifySaveSettingsOk()
+						self.log('info', 'Save settings : OK (HTTP 200, s.action=save).')
+					} else {
+						self.log('warn', 'Save settings : échec ou réponse invalide (attendu HTTP 200 et s.action=save).')
+					}
 				},
 			}
 		}

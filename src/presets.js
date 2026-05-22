@@ -298,12 +298,12 @@ module.exports = {
 		}
 
 		if (s.digitalZoom == true) {
-			presets.digitalZoomOnOff = {
-				category: 'System',
+			presets.digitalZoomToggle = {
+				category: 'Other',
 				type: 'button',
-				name: 'Digital Zoom On/Off',
+				name: 'Digital Zoom Toggle',
 				style: {
-					text: 'DZOOM\\n$(canon-ptz:digitalZoom)',
+					text: 'ZOOM\\n$(canon-ptz:digitalZoomLabel)',
 					size: '14',
 					color: '16777215',
 					bgcolor: combineRgb(0, 0, 0),
@@ -313,33 +313,13 @@ module.exports = {
 						down: [
 							{
 								actionId: 'digitalZoom',
-								options: {
-									bol: 1
-								}
-							}
+								options: { zoomMode: 'toggle', magnification: '' },
+							},
 						],
-						up: [
-							{
-								actionId: 'digitalZoom',
-								options: {
-									bol: 0
-								}
-							}
-						]
+						up: [],
 					},
 				],
-				feedbacks: [
-					{
-						feedbackId: 'digitalZoom',
-						options: {
-							option: '1',
-						},
-						style: {
-							color: foregroundColor,
-							bgcolor: backgroundColorRed,
-						}
-					}
-				]
+				feedbacks: [],
 			}
 		}
 
@@ -2567,6 +2547,42 @@ module.exports = {
 						style: {
 							color: foregroundColor,
 							bgcolor: backgroundColorRed,
+						},
+					},
+				],
+			}
+		}
+
+		if (s.saveSettings == true) {
+			presets.saveSettings = {
+				category: 'Other',
+				type: 'button',
+				name: 'Save Settings',
+				style: {
+					text: 'SAVE\\nSETTINGS',
+					size: '14',
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'saveSettings',
+								options: {},
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'saveSettings',
+						options: {},
+						style: {
+							text: 'SAVE\\nOK',
+							color: foregroundColor,
+							bgcolor: backgroundColorGreen,
 						},
 					},
 				],

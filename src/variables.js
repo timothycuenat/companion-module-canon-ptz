@@ -51,7 +51,10 @@ module.exports = {
 			variables.push({ variableId: 'tallyPreview', name: 'Tally Preview ON/OFF' })
 		}
 		if (SERIES.variables.digitalZoom == true) {
-			variables.push({ variableId: 'digitalZoom', name: 'Digital Zoom ON/OFF' })
+			variables.push({ variableId: 'digitalZoom', name: 'Digital Zoom Mode (off/dzoom/mag)' })
+			variables.push({ variableId: 'digitalZoomLabel', name: 'Digital Zoom Label (Off/300x/Mag…)' })
+			variables.push({ variableId: 'digitalZoomMag', name: 'Digital Zoom Mag Value (100–600)' })
+			variables.push({ variableId: 'digitalZoomMagLabel', name: 'Digital Zoom Mag Label (1.0x–6.0x)' })
 		}
 		if (SERIES.variables.imageStabilization == true) {
 			variables.push({ variableId: 'imageStabilization', name: 'Image Stabilization ON/OFF' })
@@ -272,6 +275,9 @@ module.exports = {
 			variableValues.tallyProgram = self.data.tallyProgram;
 			variableValues.tallyPreview = self.data.tallyPreview;
 			variableValues.digitalZoom = self.data.digitalZoom;
+			variableValues.digitalZoomLabel = self.getDigitalZoomModeLabel();
+			variableValues.digitalZoomMag = self.data.digitalZoomMag;
+			variableValues.digitalZoomMagLabel = self.getDigitalZoomMagLabel();
 			variableValues.imageStabilization = self.data.imageStabilization;
 			variableValues.firmwareVersion = self.data.firmwareVersion;
 			variableValues.protocolVersion = self.data.protocolVersion;

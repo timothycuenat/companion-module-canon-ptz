@@ -160,42 +160,32 @@ module.exports = {
 		if (SERIES.feedbacks.digitalZoom == true) {
 			feedbacks.digitalZoom = {
 				type: 'boolean',
-				name: 'System - Digital Zoom State',
-				description: 'Indicate if Digital Zoom is ON or OFF',
+				name: 'Other - Digital Zoom State',
+				description: 'Indicate zoom mode (off / dzoom 300x / mag) and optional magnification',
 				defaultStyle: {
 					color: foregroundColor,
 					bgcolor: backgroundColorRed,
 				},
 				options: [
-					{
-						type: 'dropdown',
-						label: 'Indicate in X State',
-						id: 'option',
-						default: '1',
-						choices: [
-							{ id: '0', label: 'Off' },
-							{ id: '1', label: 'On' },
-						]
-					}
+					{ ...c.DIGITAL_ZOOM_MODE_OPTION, id: 'zoomMode', default: 'dzoom', label: 'Mode attendu' },
+					{ ...c.DIGITAL_ZOOM_MAG_OPTION, id: 'magnification', label: 'Magnification (vide = ignorée)' },
 				],
-				callback: function (feedback, bank) {
+				callback: async function (feedback, bank) {
 					let opt = feedback.options
-					switch (opt.option) {
-						case '0':
-							if (self.data.digitalZoom === 'off') {
-								return true
-							}
-							break
-						case '1':
-							if (self.data.digitalZoom === 'dzoom') {
-								return true
-							}
-							break
-						default:
-							break
+					const state = self.getDigitalZoomState()
+					const expectedMode = await self.resolveDigitalZoomMode(opt.zoomMode)
+					if (!expectedMode || expectedMode === 'toggle') {
+						return false
 					}
-					return false
-				}
+					if (state !== expectedMode) {
+						return false
+					}
+					const expectedMag = await self.resolveDigitalZoomMag(opt.magnification)
+					if (expectedMag && state === 'mag' && self.getDigitalZoomMag() !== expectedMag) {
+						return false
+					}
+					return true
+				},
 			}
 		}
 
@@ -535,6 +525,22 @@ module.exports = {
 					}
 					return false
 				}
+			}
+		}
+
+		if (SERIES.feedbacks.saveSettings == true) {
+			feedbacks.saveSettings = {
+				type: 'boolean',
+				name: 'Other - Save Settings OK',
+				description: 'Actif 2 s après un save réussi (HTTP 200 et s.action=save dans la réponse)',
+				defaultStyle: {
+					color: foregroundColor,
+					bgcolor: backgroundColorGreen,
+				},
+				options: [],
+				callback: function () {
+					return self.isSaveSettingsOkActive()
+				},
 			}
 		}
 

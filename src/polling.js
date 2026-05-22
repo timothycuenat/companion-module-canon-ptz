@@ -164,6 +164,13 @@ module.exports = {
 					break;
 				case 'c.1.zoom.mode':
 					self.data.digitalZoom = str[1];
+					self.checkVariables()
+					self.checkFeedbacks()
+					break;
+				case 'c.1.zoom.mag':
+					self.data.digitalZoomMag = str[1];
+					self.checkVariables()
+					self.checkFeedbacks()
 					break;
 				case 'c.1.zoom':
 					self.data.zoomValue = str[1];

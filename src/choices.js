@@ -41,6 +41,65 @@ module.exports = {
 		allowCustom: true,
 	},
 
+	/** control.cgi : zoom.mode=off|dzoom|mag */
+	CHOICES_DIGITAL_ZOOM_MODE: [
+		{ id: '', label: '(inchangé)' },
+		{ id: 'off', label: 'Off' },
+		{ id: 'dzoom', label: 'Digital Zoom (300x)' },
+		{ id: 'mag', label: 'Digital Tele-Converter (mag)' },
+		{ id: 'toggle', label: 'Toggle mode (off → dzoom → mag)' },
+	],
+
+	/** control.cgi : zoom.mag=100|150|300|600 (mode mag actif) */
+	CHOICES_DIGITAL_ZOOM_MAG: [
+		{ id: '', label: '(inchangé)' },
+		{ id: '100', label: '1.0x' },
+		{ id: '150', label: '1.5x' },
+		{ id: '300', label: '3.0x' },
+		{ id: '600', label: '6.0x' },
+	],
+
+	DIGITAL_ZOOM_MAG_LABELS: {
+		'100': '1.0x',
+		'150': '1.5x',
+		'300': '3.0x',
+		'600': '6.0x',
+	},
+
+	DIGITAL_ZOOM_MODE_OPTION: {
+		type: 'dropdown',
+		label: 'Mode zoom',
+		id: 'zoomMode',
+		default: '',
+		choices: [
+			{ id: '', label: '(inchangé)' },
+			{ id: 'off', label: 'Off' },
+			{ id: 'dzoom', label: 'Digital Zoom (300x)' },
+			{ id: 'mag', label: 'Digital Tele-Converter (mag)' },
+			{ id: 'toggle', label: 'Toggle mode' },
+		],
+		expressionDescription: 'vide, off, dzoom, mag, toggle (on→dzoom)',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
+	DIGITAL_ZOOM_MAG_OPTION: {
+		type: 'dropdown',
+		label: 'Magnification (mag)',
+		id: 'magnification',
+		default: '',
+		choices: [
+			{ id: '', label: '(inchangé)' },
+			{ id: '100', label: '1.0x' },
+			{ id: '150', label: '1.5x' },
+			{ id: '300', label: '3.0x' },
+			{ id: '600', label: '6.0x' },
+		],
+		expressionDescription: 'vide ou 100/150/300/600 (1.0x–6.0x)',
+		allowInvalidValues: true,
+		allowCustom: true,
+	},
+
 	/** on / off / toggle pour fonctions admin/config (da05, db09-0, …). */
 	ADMIN_CONFIG_MODE_OPTION: {
 		type: 'dropdown',
