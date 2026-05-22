@@ -17,11 +17,7 @@ Mettre à jour **`package.json`** et **`companion/manifest.json`** ensemble.
 
 ## Déploiement dev (Raspberry Pi Companion)
 
-```bash
-./deploy-to-pi.sh
-```
-
-Module chargé via `/opt/companion-module-dev` — connexion **canon-ptz (Dev)** dans l’admin Companion.
+Module dans `/opt/companion-module-dev` sur le Pi — connexion **canon-ptz (Dev)** dans l’admin Companion. Déploiement via rsync/SSH (script local, non versionné).
 
 ## Doc upstream
 
