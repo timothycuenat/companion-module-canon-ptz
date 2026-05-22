@@ -1,9 +1,9 @@
 {
-	"id": "canon-ptz",
-	"name": "canon-ptz",
-	"shortname": "canon-ptz",
+	"id": "canon-ptz-15prod",
+	"name": "companion-module-canon-ptz-15prod",
+	"shortname": "canon-ptz-15prod",
 	"description": "Companion module for Canon PTZ Cameras using the XC Protocol",
-	"version": "2.5.0+15prod.0.5",
+	"version": "2.5.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-canon-ptz.git",
 	"bugs": "https://github.com/bitfocus/companion-module-canon-ptz/issues",
